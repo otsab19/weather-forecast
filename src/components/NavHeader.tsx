@@ -116,6 +116,7 @@ export const NavHeader:React.FC = () => {
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                         {pages.map((page) => (
                             <Button
+                                color={'warning'}
                                 key={page}
                                 onClick={() =>handlePage(page)}
                                 sx={{my: 2, color: 'white', display: 'block'}}

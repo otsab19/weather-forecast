@@ -54,7 +54,7 @@ export const DailyForecast: React.FC<DailyForecastProps> = ({loading, data: hour
         </>}
         {!loading &&
             <>
-                <Typography variant='h6' textAlign='center'>Hourly Forecast</Typography>
+                <Typography variant='h6' textAlign='center'><b>Hourly Forecast</b></Typography>
                 <Grid display='flex'>
                     <Box className={classes.navigation} display='flex' justifyContent='center'
                          alignItems='center'>

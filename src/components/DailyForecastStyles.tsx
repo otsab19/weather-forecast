@@ -3,7 +3,7 @@ import {makeStyles} from '@mui/styles';
 export const DailyForecastStyles = makeStyles(() => {
         return {
             weatherBox: {
-                minWidth: '90px',
+                minWidth: '100px',
                 margin: '10px',
                 border: '2px solid #aa2323',
                 borderRadius: '5px',

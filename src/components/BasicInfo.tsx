@@ -66,15 +66,15 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({loading, data, geoLocation}
                     <Box display='flex' flexDirection='column' alignItems='flex-start'>
                         <img src={`http://openweathermap.org/img/w/${data?.weather?.[0]?.icon}.png`}/>
                         <div>
-                            {data?.temp ? kelvinToCelsius(data?.temp) : 'N/A'} &deg;
+                            <b>{data?.temp ? kelvinToCelsius(data?.temp) : 'N/A'} &deg;</b>
                         </div>
                     </Box>
                     <Box display={'flex'} flexDirection={'column'}>
                         <Typography>
-                            Humidity: {data?.humidity}%
+                            Humidity: <b>{data?.humidity}%</b>
                         </Typography>
                         <Typography>
-                            Wind: {data?.wind_speed} mph
+                            Wind: <b>{data?.wind_speed} mph</b>
                         </Typography>
                     </Box>
 
@@ -82,18 +82,18 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({loading, data, geoLocation}
                 <Grid xs={4}>
                     <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <WbSunny></WbSunny>
-                        Sunrise: {sunTimes?.rise}
+                        Sunrise: &nbsp;<b>{sunTimes?.rise}</b>
                     </Box>
                     <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <WbTwilight></WbTwilight>
-                        Sunset: {sunTimes?.set}
+                        Sunset:&nbsp; <b>{sunTimes?.set}</b>
                     </Box>
                 </Grid>
                 <Grid xs={4} display='flex' flexDirection='column' alignItems='flex-end'>
                     <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                         <LocationOnOutlined></LocationOnOutlined>
                         <Typography>
-                            {locName?.[0].name}
+                            <b>{locName?.[0].name}</b>
                         </Typography>
                     </Box>
                     <Box display={'flex'} justifyContent={'center'} alignItems={'flex-end'} flexDirection='column'>
