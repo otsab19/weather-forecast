@@ -63,7 +63,7 @@ export const BasicInfo: React.FC<BasicInfoProps> = ({loading, data, geoLocation}
             </>}
             {!loading && <Grid container spacing={2} className={classes.innerBox}>
                 <Grid xs={4}>
-                    <Box display='flex' alignItems='center' flexDirection='column' alignItems='flex-start'>
+                    <Box display='flex' flexDirection='column' alignItems='flex-start'>
                         <img src={`http://openweathermap.org/img/w/${data?.weather?.[0]?.icon}.png`}/>
                         <div>
                             {data?.temp ? kelvinToCelsius(data?.temp) : 'N/A'} &deg;

@@ -6,15 +6,18 @@ import {Outlet} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import {Snackbar} from '@mui/material';
+import {createTheme, Snackbar} from '@mui/material';
+import {ThemeProvider} from "@mui/styles";
 
 const App: () => JSX.Element = () => {
+    const theme = createTheme();
     const [state, dispatch] = useReducer(appReducer, appInitialState);
     const handleClose = (_: React.SyntheticEvent | Event, reason?: string): void => {
         if (reason === 'clickaway') {
             return;
         }
-        dispatch({type: AppActionTypes.SET_SNACKBAR, data: false});    };
+        dispatch({type: AppActionTypes.SET_SNACKBAR, data: false});
+    };
 
     const action = (
         <React.Fragment>
@@ -26,19 +29,22 @@ const App: () => JSX.Element = () => {
         </React.Fragment>
     );
     return (
-        <Container>
-            <AppContext.Provider value={state}>
-                <AppContextDispatch.Provider value={dispatch}>
-                    <NavHeader></NavHeader>
-                    <Container style={{marginTop: '20px'}}>
-                        <Outlet></Outlet>
-                        <Snackbar open={state.open} autoHideDuration={6000} onClose={handleClose} message="Error in API"
-                                  action={action}/>
+        <ThemeProvider theme={theme}>
+            <Container>
+                <AppContext.Provider value={state}>
+                    <AppContextDispatch.Provider value={dispatch}>
+                        <NavHeader></NavHeader>
+                        <Container style={{marginTop: '20px'}}>
+                            <Outlet></Outlet>
+                            <Snackbar open={state.open} autoHideDuration={6000} onClose={handleClose}
+                                      message="Error in API"
+                                      action={action}/>
 
-                    </Container>
-                </AppContextDispatch.Provider>
-            </AppContext.Provider>
-        </Container>
+                        </Container>
+                    </AppContextDispatch.Provider>
+                </AppContext.Provider>
+            </Container>
+        </ThemeProvider>
     );
 };
 
