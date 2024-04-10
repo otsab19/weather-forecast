@@ -7,9 +7,7 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Thermostat} from '@mui/icons-material';
@@ -17,20 +15,16 @@ import {useNavigate} from 'react-router-dom';
 import {ROUTE_PATH} from '../routes';
 
 const pages: (keyof typeof ROUTE_PATH)[] = ['HOME' , 'SEARCH'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const NavHeader:React.FC = () => {
     const navigate = useNavigate();
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
-        setAnchorElUser(event.currentTarget);
-    };
+
 
     const handleCloseNavMenu = (): void => {
         setAnchorElNav(null);
@@ -42,9 +36,6 @@ export const NavHeader:React.FC = () => {
 
     };
 
-    const handleCloseUserMenu = (): void => {
-        setAnchorElUser(null);
-    };
 
     return (
         <AppBar position="static">
@@ -55,7 +46,6 @@ export const NavHeader:React.FC = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: {xs: 'none', md: 'flex'},
@@ -99,7 +89,7 @@ export const NavHeader:React.FC = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={() =>handlePage(page)}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -110,7 +100,6 @@ export const NavHeader:React.FC = () => {
                         variant="h5"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: {xs: 'flex', md: 'none'},
@@ -122,7 +111,7 @@ export const NavHeader:React.FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        FORECAST
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
                         {pages.map((page) => (
@@ -136,35 +125,30 @@ export const NavHeader:React.FC = () => {
                         ))}
                     </Box>
 
-                    <Box sx={{flexGrow: 0}}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{mt: '45px'}}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    {/*<Box sx={{flexGrow: 0}}>*/}
+                    {/*    <Tooltip title="Open settings">*/}
+                    {/*        <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>*/}
+                    {/*            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>*/}
+                    {/*        </IconButton>*/}
+                    {/*    </Tooltip>*/}
+                    {/*    <Menu*/}
+                    {/*        sx={{mt: '45px'}}*/}
+                    {/*        id="menu-appbar"*/}
+                    {/*        anchorEl={anchorElUser}*/}
+                    {/*        anchorOrigin={{*/}
+                    {/*            vertical: 'top',*/}
+                    {/*            horizontal: 'right',*/}
+                    {/*        }}*/}
+                    {/*        keepMounted*/}
+                    {/*        transformOrigin={{*/}
+                    {/*            vertical: 'top',*/}
+                    {/*            horizontal: 'right',*/}
+                    {/*        }}*/}
+                    {/*        open={Boolean(anchorElUser)}*/}
+                    {/*        onClose={handleCloseUserMenu}*/}
+                    {/*    >*/}
+                    {/*    </Menu>*/}
+                    {/*</Box>*/}
                 </Toolbar>
             </Container>
         </AppBar>
