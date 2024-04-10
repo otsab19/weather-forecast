@@ -2,6 +2,10 @@ export const getAPIType = (type: string = 'search'): string => {
     switch (type) {
         case 'geoLocation':
             return 'http://api.openweathermap.org/geo/1.0/direct';
+        case 'reverseGeoLocation':
+            return 'http://api.openweathermap.org/geo/1.0/reverse';
+        case 'onecall':
+            return 'https://api.openweathermap.org/data/3.0/onecall';
         default:
             return 'https://api.openweathermap.org/data/2.5/';
     }

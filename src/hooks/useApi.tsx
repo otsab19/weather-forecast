@@ -73,7 +73,7 @@ export const useApi = <T, >({
     }, []);
 
     useEffect(() => {
-        if (skip || config?.method === 'POST') return;
+        if (skip || config?.method === 'POST' || lazy) return;
         if (!skip && prevState.current.skip !== skip) {
             // set new ref state
             prevState.current.skip = false;

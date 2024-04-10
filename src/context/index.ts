@@ -1,2 +1,2 @@
 export * from './types.ts';
-export * from './AppContext.tsx'
+export * from './AppContext.tsx';

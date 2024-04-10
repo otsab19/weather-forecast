@@ -1,2 +1,2 @@
 export * from './types.ts';
-export * from './useGeoLocation.tsx'
+export * from './useGeoLocation.tsx';
